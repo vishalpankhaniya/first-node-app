@@ -8,17 +8,18 @@ userController.addUser = function(req,res){
 	user.save(function(err,savedUser){
 		console.log(err,savedUser);
 		res.send(savedUser);
+		console.log(savedUser);
 	})
 console.log(req.body);
 }
 
 
 userController.deleteUser = function(req,res){
-
-	var user = new userModel(req.body);
-	userModel.remove({_id: userid},function(err,deleteUser){
-		console.log(err,deleteUser);
-		res.send(deleteUser)
+	// console.log(req.body);
+	var userid = req.body._id;
+	userModel.deleteone({_id: userid},function(err,deleteUser){
+		console.log(deleteUser);
+		res.send(deleteUser);
 	})
 }
 userController.updateUser = function(req,res){

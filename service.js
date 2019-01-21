@@ -2,6 +2,8 @@ var exp = require('express');
 var mongoose = require('mongoose');
 var userController = require('./controllers/user.controller');
 var postController = require('./controllers/post.controller');
+var productController = require('./controllers/product.controller');
+
 
 var bodyParser = require('body-parser');
 var app = exp();
@@ -17,8 +19,10 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
+//Define All Routes to controller
+
 app.post('/user',userController.addUser);
-app.delete('/user',userController.deleteUser);
+app.delete('/user/',userController.deleteUser);
 app.put('/user',userController.updateUser);
 app.get('/user/:id',userController.getUserById);
 app.get('/user',userController.getUsers);
@@ -29,4 +33,13 @@ app.put('/post',postController.updatePost);
 app.get('/post/:id',postController.getPostById);
 app.get('/post',postController.getPosts);
 
-app.listen(4000);
+//router for product controller
+
+app.post('/product',productController.addProduct);
+app.put('/product/:id',productController.updateProduct);
+app.delete('/product/:id',productController.deleteProduct);
+app.get('/product/:id',productController.getProductById);
+app.get('/product',productController.getProducts);
+
+
+app.listen(7010);
