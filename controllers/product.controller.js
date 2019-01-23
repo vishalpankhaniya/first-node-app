@@ -9,7 +9,7 @@ productController.addProduct= function(req,res){
 	{
 
 		console.log(err,savedProduct);
-		res.send(savedproduct);
+		res.send(savedProduct);
 		console.log(savedProduct);
 
 	})
